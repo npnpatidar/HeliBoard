@@ -18,6 +18,8 @@
     <string name="use_contacts_for_spellchecking_option_summary">Spell checker uses entries from your contact list</string>
     <!-- Option to provide vibrate/haptic feedback on keypress -->
     <string name="vibrate_on_keypress">Vibrate on keypress</string>
+    <!-- Option to provide vibrate/haptic feedback on keypress even in do not disturb mode -->
+    <string name="vibrate_in_dnd_mode">Vibrate in do not disturb mode</string>
     <!-- Option to play back sound on keypress in soft keyboard -->
     <string name="sound_on_keypress">Sound on keypress</string>
     <!-- Option to control whether or not to show a popup with a larger font on each key press. -->
@@ -566,6 +568,8 @@ disposition rather than other common dispositions for Latin languages. [CHAR LIM
     <string name="prefs_keypress_sound_volume_settings">Keypress sound volume</string>
     <!-- Title of the setting for key long press delay [CHAR LIMIT=35] -->
     <string name="prefs_key_longpress_timeout_settings">Key long press delay</string>
+    <!-- Title of the setting for overriding Android SDK level for showing emojis [CHAR LIMIT=35] -->
+    <string name="prefs_key_emoji_max_sdk">Override Emoji version</string>
     <!-- Title of the setting for enabling Emoji palette triggered by the Alt key on physical keyboards [CHAR LIMIT=35] -->
     <string name="prefs_enable_emoji_alt_physical_key">Emoji for physical keyboard</string>
     <!-- Description of the settings for enabling Emoji palette triggered by the Alt key on physical keyboards [CHAR LIMIT=64] -->
