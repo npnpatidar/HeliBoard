@@ -43,6 +43,8 @@ class CombinerChain(initialText: String, combiningSpec: String) {
             mCombiners.add(HangulCombiner())
         else if (combiningSpec == "bn_khipro")
             mCombiners.add(BnKhiproCombiner())
+        else if (combiningSpec == "hi_translit")
+            mCombiners.add(HindiTranslitCombiner())
     }
 
     fun reset() {

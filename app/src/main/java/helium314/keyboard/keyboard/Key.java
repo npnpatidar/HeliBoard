@@ -1093,6 +1093,13 @@ public class Key implements Comparable<Key> {
 
             boolean needsToUpcase = needsToUpcase(mLabelFlags, params.mId.getElement());
             Locale localeForUpcasing = params.mId.getLocale();
+            // Transliteration subtypes (CombiningRules) show a Latin keyboard layout, but their
+            // locale is the target language whose script may have no upper case (e.g. Hindi).
+            // The script check in StringUtils would then block letter upcasing and shift would
+            // do nothing. Upcase with a Latin-script locale instead, matching the layout.
+            if (params.mId.getSubtype().hasExtraValue(Constants.Subtype.ExtraValue.COMBINING_RULES)) {
+                localeForUpcasing = Locale.forLanguageTag(localeForUpcasing.getLanguage() + "-Latn");
+            }
             int actionFlags = 0;
             if (params.mId.getElement().isNumberLayout())
                 actionFlags = ACTION_FLAGS_NO_KEY_PREVIEW;
