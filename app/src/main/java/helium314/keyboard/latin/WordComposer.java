@@ -254,6 +254,9 @@ public final class WordComposer {
         int cursorPos = mCursorPositionWithinWord;
         // TODO: Don't make that copy. We can do this directly from mTypedWordCache.
         final int[] codePoints = StringUtils.toCodePointArray(mTypedWordCache);
+        // Recorrection can leave the cursor beyond the cached word (e.g. a combiner
+        // that resets on replayed text), so bail out instead of indexing out of range.
+        if (cursorPos > codePoints.length) return false;
         if (expectedMoveAmount >= 0) {
             // Moving the cursor forward for the expected amount or until the end of the word has
             // been reached, whichever comes first.
