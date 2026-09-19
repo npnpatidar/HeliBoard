@@ -440,7 +440,16 @@ public final class StringUtils {
     @Nullable
     public static String toTitleCaseOfKeyLabel(@Nullable final String label,
                                                @NonNull final Locale locale) {
-        if (label == null || !ScriptUtils.scriptSupportsUppercase(locale)) {
+        if (label == null) return null;
+        if (!ScriptUtils.scriptSupportsUppercase(locale)) {
+            // Caseless scripts have no uppercase, but transliteration subtypes use a latin
+            // layout where shift must still work (it selects retroflex/long letters).
+            if (label.length() == 1) {
+                final char c = label.charAt(0);
+                if (c >= 'a' && c <= 'z') {
+                    return label.toUpperCase(Locale.ROOT);
+                }
+            }
             return label;
         }
         if (label.equals("ß"))

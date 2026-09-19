@@ -27,6 +27,7 @@ import androidx.annotation.Nullable;
 
 import helium314.keyboard.compat.AppWorkarounds;
 import helium314.keyboard.event.Event;
+import helium314.keyboard.event.HindiTransliterationCombiner;
 import helium314.keyboard.event.InputTransaction;
 import helium314.keyboard.keyboard.Keyboard;
 import helium314.keyboard.keyboard.KeyboardElement;
@@ -2049,6 +2050,10 @@ public final class InputLogic {
      * @return a caps mode from TextUtils.CAP_MODE_* or Constants.TextUtils.CAP_MODE_OFF.
      */
     public int getCurrentAutoCapsState(SettingsValues settingsValues) {
+        if (HindiTransliterationCombiner.SPEC.equals(mWordComposer.getCombiningSpec())) {
+            // Uppercase keys encode retroflex/long letters, so never auto-capitalize.
+            return Constants.TextUtils.CAP_MODE_OFF;
+        }
         if (!settingsValues.mAutoCap) return Constants.TextUtils.CAP_MODE_OFF;
 
         final EditorInfo ei = getCurrentInputEditorInfo();

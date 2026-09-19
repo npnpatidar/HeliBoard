@@ -480,6 +480,15 @@
         android:imeSubtypeExtraValue="KeyboardLayoutSet=MAIN:hindi_phonetic,EmojiCapable"
         android:isAsciiCapable="false"
     />
+    <subtype android:icon="@drawable/ic_ime_switcher"
+        android:label="@string/subtype_generic_transliteration"
+        android:subtypeId="0xe49c89a3"
+        android:imeSubtypeLocale="hi"
+        android:languageTag="hi"
+        android:imeSubtypeMode="keyboard"
+        android:imeSubtypeExtraValue="KeyboardLayoutSet=MAIN:qwerty,CombiningRules=hi_transliteration,EmojiCapable"
+        android:isAsciiCapable="true"
+    />
     <!-- This Hinglish keyboard is a preliminary layout.
            This isn't based on the final specification.
            Was disabled because there is no LM yet, and this layout does not offer anything different. -->
